@@ -17,6 +17,9 @@ article header{
 
 .divIcons_And_SearchBar{
     display: flex;
+    border: solid red;
+    align-items: center;
+    width: 100%;
 }
 
 .btnIconCamera{
@@ -69,9 +72,11 @@ article header{
     display: flex;
     align-self: center;
     
+    
 }
 
 .btnLens{
+    cursor: pointer;
     border-top-left-radius: 20%;
     border-bottom-left-radius: 20%;
 }
