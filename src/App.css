@@ -17,7 +17,6 @@ article header{
 
 .divIcons_And_SearchBar{
     display: flex;
-    border: solid red;
     align-items: center;
     width: 100%;
 }
@@ -68,7 +67,6 @@ article header{
 .divSearchBar{
     width: auto;
     height: 35px;
-    border: solid red;
     display: flex;
     align-self: center;
     
