@@ -1,41 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchImages } from '../redux/searchSlice';
-import { addFavourite } from '../redux/favouritesSlice';
-import Header from '../components/Header';
+import { homeThunk } from '../features/homeThunk';
+import { ImagesComponent } from '../components/ImagesComponent';
+import { getDataImages, getStatusImages } from '../features/homeSlice';
 
 export const Home = () => {
-  const [query, setQuery] = useState('');
+  const [data, setData] = useState ([])
+  const imagesData = useSelector(getDataImages)
+  const imagesStatus = useSelector(getStatusImages)
   const dispatch = useDispatch();
-  const images = useSelector((state) => state.search.images);
 
   useEffect(() => {
-    if (query === '') {
-      dispatch(fetchImages('random'));
-    } else {
-      dispatch(fetchImages(query));
+    if(imagesStatus ===  'idle'){
+      dispatch(homeThunk())
+    }else if(imagesStatus ===  'fulfilled'){
+      setData(imagesData)
+    }else if(imagesStatus === 'rejected'){
+      alert('Error')
     }
-  }, [query, dispatch]);
-
+  }, [imagesStatus, imagesData, dispatch])
+  
   return (
-        <div>
-        <h1>Search Images</h1>
-        <input
-            type="text"
-            placeholder="Search..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-        />
-        <div>
-            {images.map((image) => (
-            <div key={image.id}>
-                <img src={image.urls.small} alt={image.alt_description} />
-                <button onClick={() => dispatch(addFavourite(image))}>Add to my photos</button>
-            </div>
-            ))}
-        </div>
-        </div>
+    <>
+    <div>
+      <h1>hola</h1>
+       <ImagesComponent data = {data} type = 'images' /> 
+     </div>     
+    </>
   );
 };
-
-export default Home;

@@ -1,27 +1,23 @@
-body{
-    margin: 0;
-    background: #229799;
-}
 
 header{
     display: flex;
     align-items: center;
-}
-
-article header{
+  }
+  
+  article header{
     display: flex;
     height: 80px;
     width: auto;
     background: #424242;
-}
-
-.divIcons_And_SearchBar{
+  }
+  
+  .divIcons_And_SearchBar{
     display: flex;
     align-items: center;
     width: 100%;
-}
-
-.btnIconCamera{
+  }
+  
+  .btnIconCamera{
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -33,16 +29,16 @@ article header{
     background: transparent;
     cursor: pointer;
     justify-self: flex-start;
-}
-
-.btnIconCamera img{
+  }
+  
+  .btnIconCamera img{
     max-height: 100%;
     max-width: 100%;
     object-fit: cover;
     justify-self: flex-start;
-}
-
-.btnIconProfile{
+  }
+  
+  .btnIconProfile{
     height: 80px;
     width: 80px;
     border-radius: 50%;
@@ -54,27 +50,27 @@ article header{
     background: transparent;
     cursor: pointer;
     justify-self: flex-end;
-
-}
-
-.btnIconProfile img{
+  
+  }
+  
+  .btnIconProfile img{
     max-height: 100%;
     max-width: 100%;
     object-fit: cover;
     justify-self: flex-end;
-}
-
-.divSearchBar{
+  }
+  
+  .divSearchBar{
     width: auto;
     height: 35px;
     display: flex;
     align-self: center;
     
     
-}
-
-.btnLens{
+  }
+  
+  .btnLens{
     cursor: pointer;
     border-top-left-radius: 20%;
     border-bottom-left-radius: 20%;
-}
+  }
