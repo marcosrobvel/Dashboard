@@ -4,6 +4,7 @@ import icon_profile from '../assets/img/icon_profile.png';
 import { Link } from 'react-router-dom';
 import '../sass/styles.scss';
 import '../sass/header.scss';
+import '../sass/popupImage.scss';
 import { Outlet } from 'react-router-dom';
 
 export const Layout = () => {
@@ -29,8 +30,16 @@ export const Layout = () => {
           </Link>
         </div>
       </header>
+      <div className='divSeparation'></div>
     </article>
+
+    
     <Outlet/>
+
+    <footer>
+        <div>
+        </div>
+      </footer>
     </>
   );
 }

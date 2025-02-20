@@ -23,7 +23,6 @@ export const Home = () => {
   return (
     <>
     <div>
-      <h1>hola</h1>
        <ImagesComponent data = {data} type = 'images' /> 
      </div>     
     </>

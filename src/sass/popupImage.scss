@@ -1,0 +1,41 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Cuando el popup está visible */
+  .popup.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  /* Estilo de la imagen dentro del popup */
+  .popup-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Efecto de la imagen del popup cuando se abre */
+  .popup-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Cerrar popup al hacer clic en cualquier parte del fondo */
+  .popup-content img {
+    cursor: pointer;
+  }
