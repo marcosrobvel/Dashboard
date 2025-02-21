@@ -62,19 +62,6 @@ body{
   overflow: auto;
 }
 
-/*.heartLikes{
-  background-color: none;
-  width: auto;
-  height: 25px;
-  color: #48CFCB;
-}
-
-.heartLikes:hover{
-  background: #48CFCB;
-  cursor: pointer;
-}*/
-
-/* Estilos para el icono de corazón */
 .heartLikes {
   background-color: none;
   width: auto;
@@ -94,6 +81,25 @@ body{
   position: relative;
   bottom: 30px;
   left: 10px;
+}
+
+.heartLikesClickedInMYPHOTOS{
+  color: #48CFCB;
+  width: auto;
+  height: 25px;
+  position: relative;
+  bottom: 45px;
+  left: 10px;
+}
+
+.divThreeDots{
+  display: flex;
+  transform: scale(1.5);
+  position: relative;
+  bottom: 27px;
+  left: 240px;
+  cursor: pointer;
+  z-index: 9999;
 }
 
 @media (max-width: 768px) {
