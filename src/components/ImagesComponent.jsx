@@ -32,7 +32,7 @@ export const ImagesComponent = (image) => {
 
     const handleSave = (image) => {
       if (!image || !image.id) {
-        console.error("Invalid image object", image);  // Depuración
+        console.error("Invalid image object", image);
         return;
     }
       const isLiked = !likes[image.id]; 
