@@ -1,37 +1,92 @@
 .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  
-  .popup.show {
-    opacity: 1;
-    pointer-events: all;
-  }
-  
-  .popup-image {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  .popup-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .popup-content img {
-    cursor: pointer;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  background: rgba(0, 0, 0, 0.7); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  transform: scale(1.4);
+}
+
+.popup.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.popup-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border: solid 5px white;
+  padding-bottom: 30px;
+}
+
+.popup-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content img {
+  cursor: pointer;
+}
+
+.divThreeDotsPopUp{
+  transform: scale(1.5);
+  align-self: flex-end;
+  position: relative;
+  right: 60px;
+  bottom: 10px;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.image-details {
+  text-align: left;
+  width: 100%;
+}
+
+.image-details p {
+  position: relative;
+}
+
+.image-details{
+  position: relative;
+  left: 0;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.image-details input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.heartLikedPopUp{
+  position: relative;
+  z-index: 9999;
+  align-self: flex-end;
+  right: 400px;
+  bottom: 5px;
+}
+
+.heartLikesClickedInMYPHOTOSPopUp{
+  color: #48CFCB;
+  width: auto;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+}

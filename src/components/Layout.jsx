@@ -15,16 +15,16 @@ export const Layout = () => {
       <header>
         <div className='divIcons_And_SearchBar'>
           <Link to={'/'}>
-            <button className='btnIconCamera'>
+            <button className='btnIconCamera' title='Go to Home'>
               <img src={icon_camera} alt="camera icon" />
             </button>
           </Link>
           <div className="divSearchBar">
             <button className="btnLens">🔍</button>
-            <input type="text" placeholder='Buscar . . .' />
+            <input type="text" placeholder='Search . . .' />
           </div>
           <Link to={'/MyPhotos'}>
-            <button className='btnIconProfile'>
+            <button className='btnIconProfile' title='Go to MyPhotos'>
               <img src={icon_profile} alt="profile icon" />
             </button>
           </Link>

@@ -110,20 +110,16 @@ export const ImagesComponent = ({data = []}) => {
             </ResponsiveMasonry>
 
             {showPopup && (
-                <div className="popup" onClick={closePopup}>
-                    <div className="popup-content">
-                        <img src={popupImage} alt="Popup" className="popup-image" />
-                    </div>
+            <div className={`popup ${showPopup ? 'show' : ''}`} onClick={closePopup}>
+                <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+                    <img src={popupImage} alt="Popup" className="popup-image" />
+                    <div></div>
                 </div>
+                <div>
+                  
+                </div>
+            </div>
             )}
-
-        {showPopup && (
-        <div className="popup" onClick={closePopup}>
-          <div className="popup-content">
-            <img src={popupImage} alt="Popup" className="popup-image" />
-          </div>
-        </div>
-      )}
     </>  
     )
   }
