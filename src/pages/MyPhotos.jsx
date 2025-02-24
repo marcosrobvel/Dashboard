@@ -48,13 +48,11 @@ export const MyPhotos = () => {
 
   return (
     <div>
-      <h1>Mis Fotos Favoritas</h1>
       <div className="photos-container">
         {favourites.length === 0 ? (
-          <p>No tienes fotos favoritas.</p>
+          <></>
         ) : (
           <FavImagesComponent data={favourites} type="favourites" />
-          // Le pasas `favourites` como `data` a ImagesComponent
         )}
       </div>
     </div>

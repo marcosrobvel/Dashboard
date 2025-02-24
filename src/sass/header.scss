@@ -1,8 +1,8 @@
 
 header{
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    z-index: 999999999;
   }
   
   article header{
@@ -16,6 +16,7 @@ header{
     display: flex;
     align-items: center;
     width: 100%;
+    justify-content: center;
   }
   
   .btnIconCamera{
@@ -63,15 +64,22 @@ header{
   
   .divSearchBar{
     width: auto;
-    height: 35px;
+    height: 40px;
     display: flex;
     align-self: center;
-    
-    
+    margin-left: 20px;   
+    margin-right: 20px; 
+  }
+
+  .divSearchBar input{
+    width: 700px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
   }
   
   .btnLens{
     cursor: pointer;
-    border-top-left-radius: 20%;
-    border-bottom-left-radius: 20%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 50px;
   }

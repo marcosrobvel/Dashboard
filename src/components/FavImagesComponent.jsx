@@ -3,6 +3,8 @@ import '../sass/popupImage.scss';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavourite } from "../features/favouritesSlice";
+import Masonry from "react-responsive-masonry";
+import { ResponsiveMasonry } from "react-responsive-masonry";
 
 export const FavImagesComponent = (image) => {
 
@@ -51,7 +53,8 @@ export const FavImagesComponent = (image) => {
 
     return (
     <>
-        <div className="image-grid">
+        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+          <Masonry gutter="16px">
             {image.data.map((image, index) => {
                 const isLiked = likes[index];
                 return <div key={index} className="image-item" onClick={() => openPopup(image.urls.small)}>
@@ -85,7 +88,8 @@ export const FavImagesComponent = (image) => {
                 </div>
                 
             })}
-        </div>
+        </Masonry>
+      </ResponsiveMasonry>
 
         {showPopup && (
         <div className="popup" onClick={closePopup}>
