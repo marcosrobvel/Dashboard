@@ -37,7 +37,7 @@ body{
   
   .image-item {
     width: 100%;
-    margin-bottom: 16px;
+    //margin-bottom: 16px;
   }
   
   .image-item img {
@@ -95,7 +95,4 @@ body{
 }
 
 @media (max-width: 768px) {
-  .image-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
 }

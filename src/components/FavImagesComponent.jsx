@@ -53,7 +53,7 @@ export const FavImagesComponent = (image) => {
 
     return (
     <>
-        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+        <ResponsiveMasonry columnsCountBreakPoints={{ 300:1, 350: 3, 750: 4, 900: 5 }}>
           <Masonry gutter="16px">
             {image.data.map((image, index) => {
                 const isLiked = likes[index];
