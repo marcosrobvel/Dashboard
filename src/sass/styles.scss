@@ -92,5 +92,23 @@ body{
   z-index: 9999;
 }
 
+.divBtnShowMore{
+  margin-top: 500px;
+  margin-bottom: 100px;
+  width: 100%;
+  text-align: center;
+}
+
+.btnShowMore {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 @media (max-width: 768px) {
 }
+

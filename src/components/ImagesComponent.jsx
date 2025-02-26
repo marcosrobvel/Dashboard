@@ -6,7 +6,7 @@ import { toggleFavourite } from "../features/favouritesSlice";
 import Masonry from "react-responsive-masonry";
 import { ResponsiveMasonry } from "react-responsive-masonry";
 
-export const ImagesComponent = ({data = []}) => {
+export const ImagesComponent = ({data = [], fetchMoreImages, hasMore}) => {
 
     const [showPopup, setShowPopup] = useState(false); 
     const [popupImage, setPopupImage] = useState(null); 
@@ -50,9 +50,9 @@ export const ImagesComponent = ({data = []}) => {
       }
   };
 
-
     return (
-    <>
+    <>  
+     
       <ResponsiveMasonry columnsCountBreakPoints={{ 300:1, 350: 3, 750: 4, 900: 5 }}>
                 <Masonry gutter="16px">
                     {data.map((image, index) => {
@@ -67,14 +67,7 @@ export const ImagesComponent = ({data = []}) => {
                                         onClick={() => openPopup(image.urls.small)}
                                     />
                                     {isLiked ? (
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            className="heartLikesClicked"
-                                            viewBox="0 0 16 16"
-                                            onClick={(e) => {
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="heartLikesClicked" viewBox="0 0 16 16" onClick={(e) => {
                                                 e.stopPropagation();
                                                 handleSave(image);
                                                 toggleLike(index);
@@ -86,14 +79,7 @@ export const ImagesComponent = ({data = []}) => {
                                             />
                                         </svg>
                                     ) : (
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            className="heartLikes"
-                                            viewBox="0 0 16 16"
-                                            onClick={(e) => {
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="heartLikes" viewBox="0 0 16 16" onClick={(e) => {
                                                 e.stopPropagation();
                                                 handleSave(image);
                                                 toggleLike(index);
@@ -106,20 +92,29 @@ export const ImagesComponent = ({data = []}) => {
                             </div>
                         );
                     })}
-                </Masonry>
-            </ResponsiveMasonry>
-
+                    
+             
             {showPopup && (
             <div className={`popup ${showPopup ? 'show' : ''}`} onClick={closePopup}>
                 <div className="popup-content" onClick={(e) => e.stopPropagation()}>
                     <img src={popupImage} alt="Popup" className="popup-image" />
                     <div></div>
                 </div>
-                <div>
-                  
-                </div>
             </div>
             )}
+                </Masonry>
+            </ResponsiveMasonry>
+            
+            {hasMore && (
+                <div className="divBtnShowMore" style={{ textAlign: "center", marginTop: "20px" }}>
+                    <button onClick={fetchMoreImages} className="btnShowMore">Show more&nbsp;  
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </button>
+                </div>
+            )} 
+    
     </>  
     )
   }
