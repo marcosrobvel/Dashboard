@@ -1,50 +1,17 @@
-/*import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import { removeFavourite, editDescription } from '../redux/favouritesSlice';
-import { saveAs } from 'file-saver';
-import { toggleFavourite } from '../features/favouritesSlice';
 
-export const MyPhotos = () => {
-
-  const dispatch = useDispatch();  // Hook para despachar acciones
-  const favourites = useSelector((state) => state.favourites.data); // Obtenemos las imágenes favoritas
-
-  const handleToggleFavourite = (image) => {
-    dispatch(toggleFavourite(image));  // Despachar la acción toggleFavourite cuando se hace click en una imagen
-  };
-
-  return (
-    <>
-    <div>
-      <h1>Mis Fotos Favoritas</h1>
-      <div className="photos-container">
-        {favourites.length === 0 ? (
-          <p>No tienes fotos favoritas.</p>
-        ) : (
-          favourites.map((image) => (
-         //   console.log(image.urls.small),
-            <div key={image.id} className="photo">
-              <img src={image.urls.small} alt="" />
-              <button onClick={() => handleToggleFavourite(image)}>
-                {favourites.some(fav => fav.id === id) ? 'Quitar de favoritos' : 'Añadir a favoritos'}
-              </button>
-            </div>
-          ))
-        )}
-      </div>
-    </div>
-          
-        </>
-  );
-  
-};
-*/
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { FavImagesComponent } from '../components/FavImagesComponent';
+import { useOutletContext } from 'react-router-dom';
 
 export const MyPhotos = () => {
+
+  const [searchTerm] = useOutletContext();
   const favourites = useSelector((state) => state.favourites.data); 
+
+  const filteredImagesMyPhotos = favourites.filter(image =>
+    image.alt_description && image.alt_description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
@@ -52,7 +19,7 @@ export const MyPhotos = () => {
         {favourites.length === 0 ? (
           <></>
         ) : (
-          <FavImagesComponent data={favourites} type="favourites" />
+          <FavImagesComponent data={filteredImagesMyPhotos} type="favourites" />
         )}
       </div>
     </div>
