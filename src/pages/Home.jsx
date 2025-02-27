@@ -4,14 +4,20 @@ import { homeThunk } from '../features/homeThunk';
 import { ImagesComponent } from '../components/ImagesComponent';
 import { getDataImages, getStatusImages } from '../features/homeSlice';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { useOutletContext } from 'react-router-dom';
 
 export const Home = () => {
 
   const [page, setPage] = useState(1); 
   const [hasMore, setHasMore] = useState(true);
+  const [searchTerm] = useOutletContext();
   const imagesData = useSelector(getDataImages);
   const imagesStatus = useSelector(getStatusImages);
   const dispatch = useDispatch();
+
+  const filteredImages = imagesData.filter(image =>
+    image.alt_description && image.alt_description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     if (imagesStatus === 'idle') {
@@ -30,12 +36,11 @@ export const Home = () => {
     });
   };
   
-
   return (
     <>
     <div>
         <InfiniteScroll dataLength={imagesData.length} next={loadMoreImages} hasMore={hasMore} loader={<h4>Loading...</h4>} endMessage={<p>No hay más imágenes</p>} >
-          <ImagesComponent data={imagesData} />
+          <ImagesComponent data={filteredImages} />
         </InfiniteScroll>
     </div>    
     </>

@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import icon_camera from '../assets/img/icon_camera.png';
 import icon_profile from '../assets/img/icon_profile.png';
 import { Link } from 'react-router-dom';
 import '../sass/styles.scss';
 import '../sass/header.scss';
 import '../sass/popupImage.scss';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 export const Layout = () => {
+
+  const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de búsqueda
+  const navigate = useNavigate();
+
   return (
 
     <>
@@ -19,10 +23,10 @@ export const Layout = () => {
               <img src={icon_camera} alt="camera icon" />
             </button>
           </Link>
-          <div className="divSearchBar">
+          <form className="divSearchBar">
             <button className="btnLens">🔍</button>
-            <input type="text" placeholder='Search . . .' />
-          </div>
+            <input type="text" placeholder='Search . . .' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+          </form>
           <Link to={'/MyPhotos'}>
             <button className='btnIconProfile' title='Go to MyPhotos'>
               <img src={icon_profile} alt="profile icon" />
@@ -34,7 +38,7 @@ export const Layout = () => {
     </article>
 
     
-    <Outlet/>
+    <Outlet context={[searchTerm]}/>
 
     <footer>
         <div>
