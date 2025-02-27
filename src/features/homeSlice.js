@@ -15,7 +15,10 @@ export const homeSlice = createSlice({
         })
         .addCase(homeThunk.fulfilled, (state, action) => {
             state.status='fulfilled'
-            state.data = action.payload
+            const newImages = action.payload.filter(
+                (image) => !state.data.some((existingImage) => existingImage.id === image.id)
+            );
+            state.data = [...state.data, ...newImages];
         })
         .addCase(homeThunk.rejected, (state, action) => {
             state.status='rejected'
@@ -26,3 +29,9 @@ export const homeSlice = createSlice({
 
   export const getDataImages = (state) => state.images.data
   export const getStatusImages = (state) => state.images.status
+
+/*
+  const newImages = action.payload.filter(
+    (image) => !state.data.some((existingImage) => existingImage.id === image.id)
+  );
+  state.data = [...state.data, ...newImages];*/

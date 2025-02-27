@@ -12,7 +12,7 @@ import { MyPhotos } from './pages/MyPhotos';
 //import MyPhotos from './pages/MyPhotos';
 
 createRoot(document.getElementById('root')).render( 
-   <StrictMode>
+   
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
@@ -25,5 +25,4 @@ createRoot(document.getElementById('root')).render(
           </Routes>
         </BrowserRouter>
       </Provider>
-    </StrictMode>
 );
