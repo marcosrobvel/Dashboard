@@ -80,6 +80,7 @@ body{
   position: relative;
   bottom: 55px;
   left: 10px;
+  display: inline;
 }
 
 .divThreeDots{
@@ -117,6 +118,11 @@ body{
 
 textarea{
   resize: none;
+}
+
+.numLikes{
+  color: #48CFCB;
+  justify-self: flex-start;
 }
 
 @media (max-width: 768px) {

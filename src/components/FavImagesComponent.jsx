@@ -15,7 +15,16 @@ export const FavImagesComponent = ({data}) => {
 
     const [likes, setLikes] = useState({});
     const dispatch = useDispatch();
-    const favourites = useSelector(state => state.favourites.data);
+
+    const setDateFormat = (date) => {
+      const fecha = new Date(date);
+
+      const day = String(fecha.getUTCDate()).padStart(2, '0'); 
+      const month = String(fecha.getUTCMonth() + 1).padStart(2, '0');
+      const year = fecha.getUTCFullYear();
+
+      return `${day}-${month}-${year}`;
+    };
      
     const openPopup = (image) => {
       setPopupImage(image.urls.small);
@@ -25,7 +34,7 @@ export const FavImagesComponent = ({data}) => {
         likes: image.likes,
         width: image.width,
         height: image.height,
-        updatedAt: image.updated_at,
+        updatedAt: setDateFormat(image.updated_at),
     });
     setEditableDescription(image.alt_description || "");
     };
@@ -106,14 +115,16 @@ export const FavImagesComponent = ({data}) => {
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="heartLikesClickedInMYPHOTOSPopUp" viewBox="0 0 16 16">
                           <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
                       </svg>  
+                      <p className="numLikes">{popupImageData.likes}</p>
                     </div>
+                    
                     <div className="divThreeDotsPopUp">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"     viewBox="0 0 16 16">
                             <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
                           </svg>
                     </div>
                     <div className="image-details">
-                      <p><strong>Likes:</strong> {popupImageData.likes}</p>
+                      
                       <p><strong>Dimensions:</strong> {popupImageData.width} x {popupImageData.height}px</p>
                       <p><strong>Updated at:</strong> {popupImageData.updatedAt}</p>
                       <label className="labelDescription">

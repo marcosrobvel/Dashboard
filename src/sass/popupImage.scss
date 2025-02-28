@@ -44,7 +44,7 @@
   transform: scale(1.5);
   align-self: flex-end;
   position: relative;
-  right: 60px;
+  right: 90px;
   bottom: 10px;
   cursor: pointer;
   z-index: 9999;
@@ -80,7 +80,8 @@
   z-index: 9999;
   align-self: flex-end;
   right: 400px;
-  bottom: 5px;
+  top: 10px;
+  display: flex;
 }
 
 .heartLikesClickedInMYPHOTOSPopUp{
@@ -88,5 +89,6 @@
   width: auto;
   height: 25px;
   margin: 0;
+  margin-right: 5px;
   padding: 0;
 }
