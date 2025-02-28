@@ -29,7 +29,6 @@ const favouritesSlice = createSlice({
       const existingImage = state.data.find(fav => fav && fav.id === image.id);
 
       if (existingImage) {
-        console.log(image)
         state.data = state.data.filter(fav => fav && fav.id !== image.id);
       } else {
         state.data.push(image);

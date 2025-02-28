@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 import '../sass/styles.scss';
 import '../sass/header.scss';
 import '../sass/popupImage.scss';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 export const Layout = () => {
 
-  const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de búsqueda
-  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
 
   return (
 
@@ -26,6 +25,14 @@ export const Layout = () => {
           <form className="divSearchBar">
             <button className="btnLens">🔍</button>
             <input type="text" placeholder='Search . . .' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+            <select className="dropdownFilterOrder">
+              <i className="bi bi-chevron-down"></i>
+              <option value="" className='orderByOption'>Order by</option>
+              <option value="option1">Import date</option>
+              <option value="option2">Width</option>
+              <option value="option2">Height</option>
+              <option value="option2">Likes</option>
+            </select>
           </form>
           <Link to={'/MyPhotos'}>
             <button className='btnIconProfile' title='Go to MyPhotos'>

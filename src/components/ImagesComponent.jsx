@@ -41,8 +41,6 @@ export const ImagesComponent = ({ data = [] }) => {
       toggleLike(image.id);
 
       if (isLiked) {
-        console.log("LIKED")
-        console.log(image)
           dispatch(toggleFavourite(image));
           localStorage.setItem(image.id, JSON.stringify(image)); 
       } else {

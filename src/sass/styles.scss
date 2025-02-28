@@ -109,6 +109,16 @@ body{
   font-size: 16px;
 }
 
+.labelDescription{
+  position: relative;
+  bottom: 40px;
+  margin-right: 5px;
+}
+
+textarea{
+  resize: none;
+}
+
 @media (max-width: 768px) {
 }
 

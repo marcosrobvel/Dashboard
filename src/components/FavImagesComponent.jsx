@@ -18,7 +18,6 @@ export const FavImagesComponent = ({data}) => {
     const favourites = useSelector(state => state.favourites.data);
      
     const openPopup = (image) => {
-      console.log(image)
       setPopupImage(image.urls.small);
       setShowPopup(true);
       setPopupImageData({ 
@@ -52,8 +51,6 @@ export const FavImagesComponent = ({data}) => {
       toggleLike(image.id);
 
       if (isLiked) {
-        console.log("LIKED")
-        console.log(image)
           dispatch(toggleFavourite(image));
           localStorage.setItem(image.id, JSON.stringify(image)); 
       } else {
@@ -119,9 +116,10 @@ export const FavImagesComponent = ({data}) => {
                       <p><strong>Likes:</strong> {popupImageData.likes}</p>
                       <p><strong>Dimensions:</strong> {popupImageData.width} x {popupImageData.height}px</p>
                       <p><strong>Updated at:</strong> {popupImageData.updatedAt}</p>
-                      <label>
+                      <label className="labelDescription">
                           <strong>Description:</strong>
-                          <input
+                      </label>
+                          <textarea
                               type="text"
                               value={editableDescription}
                               onChange={(e) => {
@@ -130,7 +128,7 @@ export const FavImagesComponent = ({data}) => {
                               }}
                               placeholder="Añade una descripción"
                           />
-                      </label>
+                      
                   </div>
                 </div>
             </div>

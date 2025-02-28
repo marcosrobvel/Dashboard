@@ -73,8 +73,6 @@ header{
 
   .divSearchBar input{
     width: 700px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
   }
   
   .btnLens{
@@ -82,4 +80,18 @@ header{
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     width: 50px;
+  }
+
+  .dropdownFilterOrder{
+    width: auto;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  .orderByOption{
+    color: grey;
+  }
+
+  @media (max-width: 768px) {
+    
   }
