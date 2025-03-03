@@ -12,6 +12,7 @@ export const FavImagesComponent = ({data}) => {
     const [popupImage, setPopupImage] = useState(null); 
     const [popupImageData, setPopupImageData] = useState(null);
     const [editableDescription, setEditableDescription] = useState("");
+    const [dropdownIndex, setDropdownIndex] = useState(null);
 
     const [likes, setLikes] = useState({});
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export const FavImagesComponent = ({data}) => {
       return `${day}-${month}-${year}`;
     };
      
-    const openPopup = (image) => {
+    const openPopup = (image, index) => {
       setPopupImage(image.urls.small);
       setShowPopup(true);
       setPopupImageData({ 
@@ -35,13 +36,17 @@ export const FavImagesComponent = ({data}) => {
         width: image.width,
         height: image.height,
         updatedAt: setDateFormat(image.updated_at),
+        index: index,
+        urls: image.urls,
     });
     setEditableDescription(image.alt_description || "");
+    setDropdownIndex(index);
     };
   
     const closePopup = () => {
       setShowPopup(false);
       setPopupImage(null);
+      setShowDropdown(null); 
     };
 
     const toggleLike = (index) => {
@@ -67,6 +72,14 @@ export const FavImagesComponent = ({data}) => {
       }
   };
 
+  const handleDownload = (imageUrl, imageName) => {
+        saveAs(imageUrl, imageName || 'image.jpg');
+    };
+
+    const toggleDropdown = (index) => {
+      setDropdownIndex(dropdownIndex === index ? null : index); 
+    };
+
 
     return (
     <>
@@ -75,31 +88,11 @@ export const FavImagesComponent = ({data}) => {
             {data.map((image, index) => {
                 return <div key={index} className="image-item" onClick={() => openPopup(image.urls.small)}>
                     <div className="divAllImages">
-                    <img
-                                    src={image.urls.small}
-                                    alt="image"
-                                    className="cardImage"
-                                    onClick={() => openPopup(image)}
-                                    
-                                />
-                                <div className="divThreeDots"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"     viewBox="0 0 16 16">
-                                            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                          </svg>
-                                </div>
-                                <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        className="heartLikesClickedInMYPHOTOS"
-                                        viewBox="0 0 16 16"
-                                        
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
-                                        />
-                                    </svg>                                
+                    <img src={image.urls.small} alt="image" className="cardImage" onClick={() => openPopup(image, index)} />
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="heartLikesClickedInMYPHOTOS" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+                                </svg>                                
                     </div>
                 </div>
                 
@@ -118,11 +111,16 @@ export const FavImagesComponent = ({data}) => {
                       <p className="numLikes">{popupImageData.likes}</p>
                     </div>
                     
-                    <div className="divThreeDotsPopUp">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"     viewBox="0 0 16 16">
-                            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                          </svg>
+                    <div className="divThreeDotsPopUp" onClick={(e) => {
+                        e.stopPropagation();
+                        handleDownload(popupImageData.urls.small, `image_${popupImageData.index}.jpg`);
+                    }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-download" viewBox="0 0 16 16">
+                          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                        </svg>
                     </div>
+
                     <div className="image-details">
                       
                       <p><strong>Dimensions:</strong> {popupImageData.width} x {popupImageData.height}px</p>
@@ -150,16 +148,3 @@ export const FavImagesComponent = ({data}) => {
     </>  
     )
   }
-
-
-  /*{showPopup && (
-                <div className={`popup ${showPopup ? 'show' : ''}`} onClick={closePopup}>
-                <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-                    <img src={popupImage} alt="Popup" className="popup-image" />
-                    <div className="divThreeDotsPopUp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"     viewBox="0 0 16 16">
-                            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                          </svg>
-                    </div>
-                </div>
-            </div>
-            )}*/
