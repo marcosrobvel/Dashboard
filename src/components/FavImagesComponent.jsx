@@ -6,13 +6,14 @@ import { toggleFavourite } from "../features/favouritesSlice";
 import Masonry from "react-responsive-masonry";
 import { ResponsiveMasonry } from "react-responsive-masonry";
 
-export const FavImagesComponent = ({data}) => {
+export const FavImagesComponent = ({data : initialData}) => {
 
     const [showPopup, setShowPopup] = useState(false); 
     const [popupImage, setPopupImage] = useState(null); 
     const [popupImageData, setPopupImageData] = useState(null);
     const [editableDescription, setEditableDescription] = useState("");
     const [dropdownIndex, setDropdownIndex] = useState(null);
+    const [data, setData] = useState(initialData);
 
     const [likes, setLikes] = useState({});
     const dispatch = useDispatch();
@@ -61,6 +62,7 @@ export const FavImagesComponent = ({data}) => {
         console.error("Invalid image object", image);  
         return;
     }
+    
       const isLiked = !likes[image.id]; 
       toggleLike(image.id);
 
@@ -69,6 +71,7 @@ export const FavImagesComponent = ({data}) => {
           localStorage.setItem(image.id, JSON.stringify(image)); 
       } else {
           localStorage.removeItem(image.id);
+          setData(prevData => prevData.filter(img => img.id !== image.id));
       }
   };
 
@@ -90,7 +93,10 @@ export const FavImagesComponent = ({data}) => {
                     <div className="divAllImages">
                     <img src={image.urls.small} alt="image" className="cardImage" onClick={() => openPopup(image, index)} />
                                 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="heartLikesClickedInMYPHOTOS" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="heartLikesClickedInMYPHOTOS" viewBox="0 0 16 16" onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleSave(image);
+                                }}>
                                     <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
                                 </svg>                                
                     </div>
