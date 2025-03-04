@@ -185,13 +185,7 @@ export const FavImagesComponent = ({data : initialData}) => {
                       <label className="labelDescription">
                           <strong>Description:</strong>
                       </label>
-                      <textarea
-                                type="text"
-                                value={descriptions[popupImageData.id] || popupImageData.description} 
-                                onChange={(e) => handleDescriptionChange(e, popupImageData.id)} 
-                                placeholder="Add a description"
-                            />
-                      
+                      <textarea type="text" value={descriptions[popupImageData.id] || popupImageData.description} onChange={(e) => handleDescriptionChange(e, popupImageData.id)} placeholder="Add a description" /> 
                   </div>
                 </div>
             </div>
