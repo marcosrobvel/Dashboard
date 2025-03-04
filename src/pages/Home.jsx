@@ -40,7 +40,7 @@ export const Home = () => {
     <>
     <div>
         <InfiniteScroll dataLength={imagesData.length} next={loadMoreImages} hasMore={hasMore} loader={<h4>Loading...</h4>} endMessage={<p>No hay más imágenes</p>} >
-          <ImagesComponent data={filteredImages} />
+          <ImagesComponent data={filteredImages}  />
         </InfiniteScroll>
     </div>    
     </>

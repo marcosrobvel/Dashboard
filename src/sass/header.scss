@@ -87,8 +87,19 @@ header{
     border-bottom-right-radius: 20px;
   }
 
-  .orderByOption{
+  .dropdownFilterOrder .orderByOption{
     color: grey;
+  }
+
+  .dropdownFilterOrder{
+    height: 40px;
+  }
+
+  .dropdownFilterOrderAscDesc{
+    border-radius: 20px;
+    margin-left: 10px;
+    height: 40px;
+    width: 50px;
   }
 
   @media (max-width: 768px) {

@@ -6,10 +6,18 @@ import '../sass/styles.scss';
 import '../sass/header.scss';
 import '../sass/popupImage.scss';
 import { Outlet } from 'react-router-dom';
+import { SortDropdown } from './SortDropdown';
 
 export const Layout = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortCriteria, setSortCriteria] = useState('date'); 
+  const [sortDirection, setSortDirection] = useState('asc');
+
+  const handleSortChange = (criteria, direction) => {
+    setSortCriteria(criteria);
+    setSortDirection(direction);
+};
 
   return (
 
@@ -25,14 +33,7 @@ export const Layout = () => {
           <form className="divSearchBar">
             <button className="btnLens">🔍</button>
             <input type="text" placeholder='Search . . .' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
-            <select className="dropdownFilterOrder">
-              <i className="bi bi-chevron-down"></i>
-              <option value="" className='orderByOption'>Order by</option>
-              <option value="option1">Import date</option>
-              <option value="option2">Width</option>
-              <option value="option2">Height</option>
-              <option value="option2">Likes</option>
-            </select>
+            <SortDropdown onSortChange={handleSortChange} />
           </form>
           <Link to={'/MyPhotos'}>
             <button className='btnIconProfile' title='Go to MyPhotos'>
@@ -45,7 +46,7 @@ export const Layout = () => {
     </article>
 
     
-    <Outlet context={[searchTerm]}/>
+    <Outlet context={[searchTerm, sortCriteria, sortDirection]}/>
 
     <footer>
         <div>

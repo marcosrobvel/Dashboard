@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavourite } from "../features/favouritesSlice";
 import Masonry from "react-responsive-masonry";
 import { ResponsiveMasonry } from "react-responsive-masonry";
+import { useOutletContext } from "react-router-dom";
 
 export const ImagesComponent = ({ data = [] }) => {
 
@@ -12,6 +13,9 @@ export const ImagesComponent = ({ data = [] }) => {
     const [popupImage, setPopupImage] = useState(null); 
     const [likes, setLikes] = useState({});
     const dispatch = useDispatch();
+    const [sortedData, setSortedData] = useState(data);
+
+    const [searchTerm, sortCriteria, sortDirection] = useOutletContext();
     
     
   
@@ -48,12 +52,51 @@ export const ImagesComponent = ({ data = [] }) => {
       }
   };
 
+    const sortImages = (images, criteria, direction) => {
+        return [...images].sort((a, b) => {
+            let valueA, valueB;
+
+            switch (criteria) {
+                case "date":
+                    valueA = new Date(a.updated_at);
+                    valueB = new Date(b.updated_at);
+                    break;
+                case "width":
+                    valueA = a.width;
+                    valueB = b.width;
+                    break;
+                case "height":
+                    valueA = a.height;
+                    valueB = b.height;
+                    break;
+                case "likes":
+                    valueA = a.likes;
+                    valueB = b.likes;
+                    break;
+                default:
+                    valueA = a.updated_at;
+                    valueB = b.updated_at;
+            }
+
+            if (direction === "asc") {
+                return valueA - valueB;
+            } else {
+                return valueB - valueA;
+            }
+        });
+    };
+
+    useEffect(() => {
+        const sorted = sortImages(data, sortCriteria, sortDirection);
+        setSortedData(sorted);
+    }, [data, sortCriteria, sortDirection]);
+
     return (
     <>  
      
       <ResponsiveMasonry columnsCountBreakPoints={{ 300:1, 350: 3, 750: 4, 900: 5 }}>
                 <Masonry gutter="16px">
-                    {data.map((image, index) => {
+                    {sortedData.map((image, index) => {
                         const isLiked = likes[index];
                         return (
                             <div key={index} className="image-item" onClick={() => openPopup(image.urls.small)}>

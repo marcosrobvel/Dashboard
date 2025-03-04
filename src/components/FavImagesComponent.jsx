@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavourite } from "../features/favouritesSlice";
 import Masonry from "react-responsive-masonry";
 import { ResponsiveMasonry } from "react-responsive-masonry";
+import { useOutletContext } from "react-router-dom";
 
 export const FavImagesComponent = ({data : initialData}) => {
 
@@ -14,6 +15,7 @@ export const FavImagesComponent = ({data : initialData}) => {
     const [editableDescription, setEditableDescription] = useState("");
     const [dropdownIndex, setDropdownIndex] = useState(null);
     const [data, setData] = useState(initialData);
+    const [searchTerm, sortCriteria, sortDirection] = useOutletContext();
 
     const [likes, setLikes] = useState({});
     const dispatch = useDispatch();
@@ -32,7 +34,7 @@ export const FavImagesComponent = ({data : initialData}) => {
       setPopupImage(image.urls.small);
       setShowPopup(true);
       setPopupImageData({ 
-        description: image.alt_description || "Sin descripción",
+        description: image.alt_description || "No description",
         likes: image.likes,
         width: image.width,
         height: image.height,
@@ -82,6 +84,45 @@ export const FavImagesComponent = ({data : initialData}) => {
     const toggleDropdown = (index) => {
       setDropdownIndex(dropdownIndex === index ? null : index); 
     };
+
+    const sortImages = (images, criteria, direction) => {
+        return images.sort((a, b) => {
+            let valueA, valueB;
+
+            switch (criteria) {
+                case "date":
+                    valueA = new Date(a.updated_at);
+                    valueB = new Date(b.updated_at);
+                    break;
+                case "width":
+                    valueA = a.width;
+                    valueB = b.width;
+                    break;
+                case "height":
+                    valueA = a.height;
+                    valueB = b.height;
+                    break;
+                case "likes":
+                    valueA = a.likes;
+                    valueB = b.likes;
+                    break;
+                default:
+                    valueA = a.updated_at;
+                    valueB = b.updated_at;
+            }
+
+            if (direction === "asc") {
+                return valueA - valueB;
+            } else {
+                return valueB - valueA;
+            }
+        });
+    };
+
+    useEffect(() => {
+        const sortedData = sortImages([...initialData], sortCriteria, sortDirection);
+        setData(sortedData);
+    }, [sortCriteria, sortDirection, initialData]);
 
 
     return (
