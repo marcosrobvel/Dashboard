@@ -12,10 +12,11 @@ export const FavImagesComponent = ({data : initialData}) => {
     const [showPopup, setShowPopup] = useState(false); 
     const [popupImage, setPopupImage] = useState(null); 
     const [popupImageData, setPopupImageData] = useState(null);
-    const [editableDescription, setEditableDescription] = useState("");
+  //  const [editableDescription, setEditableDescription] = useState("");
     const [dropdownIndex, setDropdownIndex] = useState(null);
     const [data, setData] = useState(initialData);
     const [searchTerm, sortCriteria, sortDirection] = useOutletContext();
+    const [descriptions, setDescriptions] = useState({});
 
     const [likes, setLikes] = useState({});
     const dispatch = useDispatch();
@@ -34,13 +35,14 @@ export const FavImagesComponent = ({data : initialData}) => {
       setPopupImage(image.urls.small);
       setShowPopup(true);
       setPopupImageData({ 
-        description: image.alt_description || "No description",
+        description: descriptions[image.id] || image.alt_description || "No description",
         likes: image.likes,
         width: image.width,
         height: image.height,
         updatedAt: setDateFormat(image.updated_at),
         index: index,
         urls: image.urls,
+        id: image.id,
     });
     setEditableDescription(image.alt_description || "");
     setDropdownIndex(index);
@@ -84,6 +86,14 @@ export const FavImagesComponent = ({data : initialData}) => {
     const toggleDropdown = (index) => {
       setDropdownIndex(dropdownIndex === index ? null : index); 
     };
+
+    const handleDescriptionChange = (e, imageId) => {
+      const newDescription = e.target.value;
+      setDescriptions((prevDescriptions) => ({
+          ...prevDescriptions,
+          [imageId]: newDescription,
+      }));
+  };
 
     const sortImages = (images, criteria, direction) => {
         return images.sort((a, b) => {
@@ -175,15 +185,12 @@ export const FavImagesComponent = ({data : initialData}) => {
                       <label className="labelDescription">
                           <strong>Description:</strong>
                       </label>
-                          <textarea
-                              type="text"
-                              value={editableDescription}
-                              onChange={(e) => {
-                                  setEditableDescription(e.target.value); 
-                                  setPopupImageData({ ...popupImageData, description: e.target.value }); 
-                              }}
-                              placeholder="Añade una descripción"
-                          />
+                      <textarea
+                                type="text"
+                                value={descriptions[popupImageData.id] || popupImageData.description} 
+                                onChange={(e) => handleDescriptionChange(e, popupImageData.id)} 
+                                placeholder="Add a description"
+                            />
                       
                   </div>
                 </div>
