@@ -25,7 +25,7 @@ export const Layout = () => {
     <article>
       <header>
         <div className='divIcons_And_SearchBar'>
-          <Link to={'/Dashboard'}>
+          <Link to={'/'}>
             <button className='btnIconCamera' title='Go to Home'>
               <img src={icon_camera} alt="camera icon" />
             </button>
