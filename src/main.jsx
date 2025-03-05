@@ -18,8 +18,6 @@ createRoot(document.getElementById('root')).render(
           <Routes>
               <Route element={<Layout/>}>
                 <Route path='dashboard' element={< Home />} />
-              </Route>
-              <Route element={<Layout/>}>
                 <Route path='dashboard/myphotos' element={< MyPhotos />} />
               </Route>
           </Routes>
