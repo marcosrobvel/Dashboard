@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')).render(
                 <Route path='dashboard' element={< Home />} />
               </Route>
               <Route element={<Layout/>}>
-                <Route path='myphotos' element={< MyPhotos />} />
+                <Route path='dashboard/myphotos' element={< MyPhotos />} />
               </Route>
           </Routes>
         </BrowserRouter>

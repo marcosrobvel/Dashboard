@@ -36,7 +36,7 @@ export const Layout = () => {
             <input type="text" placeholder='Search . . .' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
             <SortDropdown onSortChange={handleSortChange} />
           </form>
-          <Link to={'/MyPhotos'}>
+          <Link to={'/Dashboard/MyPhotos'}>
             <button className='btnIconProfile' title='Go to MyPhotos'>
               <img src={icon_profile} alt="profile icon" />
             </button>
