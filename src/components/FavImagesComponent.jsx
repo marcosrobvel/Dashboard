@@ -18,6 +18,7 @@ export const FavImagesComponent = ({data : initialData}) => {
     const [searchTerm, sortCriteria, sortDirection] = useOutletContext();
     const [descriptions, setDescriptions] = useState({});
     const [initialDescription, setInitialDescription] = useState("");
+    const [isSaveDisabled, setIsSaveDisabled] = useState(true);
 
     const [likes, setLikes] = useState({});
     const dispatch = useDispatch();
@@ -54,6 +55,7 @@ export const FavImagesComponent = ({data : initialData}) => {
     });
     setEditableDescription(image.alt_description || "");
     setDropdownIndex(index);
+    setIsSaveDisabled(true);
     };
   
     const closePopup = () => {
@@ -114,6 +116,7 @@ export const FavImagesComponent = ({data : initialData}) => {
       setDescriptions(updatedDescriptions);
 
       localStorage.setItem("imageDescriptions", JSON.stringify(updatedDescriptions));
+      setIsSaveDisabled(true);
     }
   };
 
@@ -123,7 +126,6 @@ export const FavImagesComponent = ({data : initialData}) => {
         ...prevDescriptions,
         [popupImageData.id]: initialDescription,
       }));
-      closePopup();
     }
   };
 
@@ -133,6 +135,11 @@ export const FavImagesComponent = ({data : initialData}) => {
       ...prevDescriptions,
       [imageId]: newDescription,
     }));
+    if (newDescription !== initialDescription) {
+        setIsSaveDisabled(false);
+      } else {
+        setIsSaveDisabled(true);
+      }
   };
 
     const sortImages = (images, criteria, direction) => {
@@ -226,8 +233,8 @@ export const FavImagesComponent = ({data : initialData}) => {
                           <strong>Description:</strong>
                       </label>
                       <textarea type="text" value={descriptions[popupImageData.id] || popupImageData.description} onChange={(e) => handleDescriptionChange(e, popupImageData.id)} placeholder="Add a description" /> 
-                      <button className="btnSave" onClick={handleSaveDesc}>Save</button>
-                      <button className="btnCancel" onClick={handleCancelDesc}>Cancel</button>
+                      <button className="btnSave" onClick={handleSaveDesc} disabled={isSaveDisabled}>Save</button>
+                      <button className="btnCancel" onClick={handleCancelDesc}>Reset</button>
                   </div>
                 </div>
             </div>

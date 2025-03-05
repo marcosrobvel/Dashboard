@@ -136,6 +136,10 @@ textarea{
   color: white;
 }
 
+.btnSave:disabled{
+  background-color: grey;
+}
+
 /* Media Queries con Masonry */
 
 /* Laptop L (1440px) */
