@@ -12,14 +12,22 @@ export const FavImagesComponent = ({data : initialData}) => {
     const [showPopup, setShowPopup] = useState(false); 
     const [popupImage, setPopupImage] = useState(null); 
     const [popupImageData, setPopupImageData] = useState(null);
-  //  const [editableDescription, setEditableDescription] = useState("");
+    const [editableDescription, setEditableDescription] = useState("");
     const [dropdownIndex, setDropdownIndex] = useState(null);
     const [data, setData] = useState(initialData);
     const [searchTerm, sortCriteria, sortDirection] = useOutletContext();
     const [descriptions, setDescriptions] = useState({});
+    const [initialDescription, setInitialDescription] = useState("");
 
     const [likes, setLikes] = useState({});
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        const savedDescriptions = localStorage.getItem("imageDescriptions");
+        if (savedDescriptions) {
+          setDescriptions(JSON.parse(savedDescriptions));
+        }
+      }, []);
 
     const setDateFormat = (date) => {
       const fecha = new Date(date);
@@ -87,12 +95,44 @@ export const FavImagesComponent = ({data : initialData}) => {
       setDropdownIndex(dropdownIndex === index ? null : index); 
     };
 
-    const handleDescriptionChange = (e, imageId) => {
+    /*const handleDescriptionChange = (e, imageId) => {
       const newDescription = e.target.value;
       setDescriptions((prevDescriptions) => ({
           ...prevDescriptions,
           [imageId]: newDescription,
       }));
+  };*/
+
+  const handleSaveDesc = () => {
+    if (popupImageData) {
+      const newDescription = descriptions[popupImageData.id] || popupImageData.description;
+      const updatedDescriptions = {
+        ...descriptions,
+        [popupImageData.id]: newDescription,
+      };
+
+      setDescriptions(updatedDescriptions);
+
+      localStorage.setItem("imageDescriptions", JSON.stringify(updatedDescriptions));
+    }
+  };
+
+  const handleCancelDesc = () => {
+    if (popupImageData) {
+      setDescriptions((prevDescriptions) => ({
+        ...prevDescriptions,
+        [popupImageData.id]: initialDescription,
+      }));
+      closePopup();
+    }
+  };
+
+  const handleDescriptionChange = (e, imageId) => {
+    const newDescription = e.target.value;
+    setDescriptions((prevDescriptions) => ({
+      ...prevDescriptions,
+      [imageId]: newDescription,
+    }));
   };
 
     const sortImages = (images, criteria, direction) => {
@@ -137,7 +177,7 @@ export const FavImagesComponent = ({data : initialData}) => {
 
     return (
     <>
-        <ResponsiveMasonry columnsCountBreakPoints={{ 300:1, 350: 3, 750: 4, 900: 5 }}>
+        <ResponsiveMasonry columnsCountBreakPoints={{ 300: 1, 350: 2, 750: 3, 900: 4, 1200: 5, }}>
           <Masonry gutter="16px">
             {data.map((image, index) => {
                 return <div key={index} className="image-item" onClick={() => openPopup(image.urls.small)}>
@@ -170,7 +210,7 @@ export const FavImagesComponent = ({data : initialData}) => {
                     
                     <div className="divThreeDotsPopUp" onClick={(e) => {
                         e.stopPropagation();
-                        handleDownload(popupImageData.urls.small, `image_${popupImageData.index}.jpg`);
+                        handleDownload(popupImageData.urls.full, `image_${popupImageData.index}.jpg`);
                     }}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-download" viewBox="0 0 16 16">
                           <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
@@ -186,6 +226,8 @@ export const FavImagesComponent = ({data : initialData}) => {
                           <strong>Description:</strong>
                       </label>
                       <textarea type="text" value={descriptions[popupImageData.id] || popupImageData.description} onChange={(e) => handleDescriptionChange(e, popupImageData.id)} placeholder="Add a description" /> 
+                      <button className="btnSave" onClick={handleSaveDesc}>Save</button>
+                      <button className="btnCancel" onClick={handleCancelDesc}>Cancel</button>
                   </div>
                 </div>
             </div>

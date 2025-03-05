@@ -1,107 +1,191 @@
+header {
+  display: flex;
+  justify-content: center; /* Centra todo el contenido horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  width: 100%;
+  z-index: 999999999;
+  margin-bottom: 50px;
+}
 
-header{
-    display: flex;
-    margin-bottom: 50px;
-    z-index: 999999999;
+article header {
+  display: flex;
+  height: 80px;
+  width: 100%;            
+  background: #424242;
+  justify-content: space-between; 
+  align-items: center;     
+  padding: 0 20px;       
+}
+
+.divIcons_And_SearchBar {
+  display: flex;
+  align-items: center;     
+  justify-content: center;
+  width: 100%;
+}
+
+.btnIconCamera, .btnIconProfile {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.btnIconProfile{
+  transform: scale(1.8);
+}
+
+.btnIconCamera{
+  transform: scale(1.3);
+}
+
+.btnIconCamera img, .btnIconProfile img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.divSearchBar {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center; 
+  margin: 0 auto;         
+}
+
+.divSearchBar input {
+  width: 700px; 
+}
+
+.btnLens {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 50px;
+}
+
+.dropdownFilterOrder {
+  width: auto;
+  height: 40px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.dropdownFilterOrderAscDesc {
+  border-radius: 20px;
+  margin-left: 10px;
+  height: 40px;
+  width: 50px;
+}
+
+.titleApp{
+  font-family: "Pacifico";
+  display: flex;
+  align-self: center;
+  color: white;
+  font-size: 30px;
+  position: relative;
+  left: 10px;
+  top: 5px;
+}
+
+/* Media Queries */
+
+/* Laptop L (1440px) */
+@media (max-width: 1440px) {
+  .divSearchBar input {
+    width: 600px;
   }
-  
-  article header{
-    display: flex;
-    height: 80px;
-    width: auto;
-    background: #424242;
-  }
-  
-  .divIcons_And_SearchBar{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .btnIconCamera{
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    justify-self: flex-start;
-  }
-  
-  .btnIconCamera img{
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: cover;
-    justify-self: flex-start;
-  }
-  
-  .btnIconProfile{
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    justify-self: flex-end;
-  
-  }
-  
-  .btnIconProfile img{
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: cover;
-    justify-self: flex-end;
-  }
-  
-  .divSearchBar{
-    width: auto;
-    height: 40px;
-    display: flex;
-    align-self: center;
-    margin-left: 20px;   
-    margin-right: 20px; 
+}
+
+/* Laptop (1024px) */
+@media (max-width: 1024px) {
+  .divSearchBar input {
+    width: 500px;
   }
 
-  .divSearchBar input{
-    width: 700px;
+  .titleApp {
+    font-size: 28px;
   }
-  
-  .btnLens{
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    width: 50px;
+}
+
+/* Tablet (768px) */
+@media (max-width: 768px) {
+  .divSearchBar input {
+    width: 400px;
   }
 
-  .dropdownFilterOrder{
-    width: auto;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+  .titleApp {
+    font-size: 24px;
   }
 
-  .dropdownFilterOrder .orderByOption{
-    color: grey;
+  .btnIconProfile {
+    transform: scale(1.5);
   }
 
-  .dropdownFilterOrder{
-    height: 40px;
+  .btnIconCamera {
+    transform: scale(1.2);
+  }
+}
+
+/* Mobile L (425px) */
+@media (max-width: 425px) {
+  .divSearchBar input {
+    width: 300px;
   }
 
-  .dropdownFilterOrderAscDesc{
-    border-radius: 20px;
-    margin-left: 10px;
-    height: 40px;
-    width: 50px;
+  .titleApp {
+    font-size: 20px;
   }
 
-  @media (max-width: 768px) {
-    
+  .btnIconProfile {
+    transform: scale(1.3);
   }
+
+  .btnIconCamera {
+    transform: scale(1.1);
+  }
+}
+
+/* Mobile M (375px) */
+@media (max-width: 375px) {
+  .divSearchBar input {
+    width: 250px;
+  }
+
+  .titleApp {
+    font-size: 18px;
+  }
+
+  .btnIconProfile {
+    transform: scale(1.2);
+  }
+
+  .btnIconCamera {
+    transform: scale(1);
+  }
+}
+
+/* Mobile S (320px) */
+@media (max-width: 320px) {
+  .divSearchBar input {
+    width: 200px;
+  }
+
+  .titleApp {
+    font-size: 16px;
+  }
+
+  .btnIconProfile {
+    transform: scale(1);
+  }
+
+  .btnIconCamera {
+    transform: scale(0.9);
+  }
+}
