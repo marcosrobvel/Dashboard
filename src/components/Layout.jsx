@@ -32,8 +32,7 @@ export const Layout = () => {
           </Link>
           <p className='titleApp'>Visualist</p>
           <form className="divSearchBar">
-            <button className="btnLens">🔍</button>
-            <input type="text" placeholder='Search . . .' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+            <input type="text" placeholder=' Search . . .' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
             <SortDropdown onSortChange={handleSortChange} />
           </form>
           <Link to={'/Dashboard/MyPhotos'}>

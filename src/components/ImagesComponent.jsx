@@ -94,7 +94,7 @@ export const ImagesComponent = ({ data = [] }) => {
     return (
     <>  
      
-      <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 375: 1, 425: 1, 768: 2, 900: 3, 1024: 4, 1200: 5  }}>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 375: 1, 425: 2, 768: 3, 900: 3, 1024: 4, 1200: 5  }}>
                 <Masonry gutter="16px">
                     {sortedData.map((image, index) => {
                         const isLiked = likes[index];
