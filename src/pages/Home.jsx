@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { homeThunk } from '../features/homeThunk';
 import { ImagesComponent } from '../components/ImagesComponent';
-import { getDataImages, getStatusImages } from '../features/homeSlice';
+import { getDataImages, getStatusImages, resetData } from '../features/homeSlice';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useOutletContext } from 'react-router-dom';
 
@@ -15,20 +15,21 @@ export const Home = () => {
   const imagesStatus = useSelector(getStatusImages);
   const dispatch = useDispatch();
 
-  const filteredImages = imagesData.filter(image =>
-    image.alt_description && image.alt_description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredImages = imagesData
 
   useEffect(() => {
-    if (imagesStatus === 'idle') {
-      dispatch(homeThunk(page));
-    }
-  }, [imagesStatus, dispatch, page]);
+      const getData = setTimeout(() => {
+      dispatch(resetData())
+      dispatch(homeThunk({page, searchTerm}));
+    }, 1000)
+
+    return () => clearTimeout(getData)
+  }, [searchTerm]);
 
   const loadMoreImages = () => {
     const nextPage = page + 1;
-    dispatch(homeThunk(nextPage)).then((action) => {
-      if (action.payload && action.payload.length > 0) {
+    dispatch(homeThunk({page: nextPage, searchTerm})).then((action) => {
+      if (action.payload?.results && action.payload.results.length > 0) {
         setPage(nextPage);
       } else {
         setHasMore(false);

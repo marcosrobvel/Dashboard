@@ -18,9 +18,8 @@ createRoot(document.getElementById('root')).render(
         <HashRouter>
           <Routes>
               <Route element={<Layout/>}>
-                <Route path="/" element={<Navigate to="/dashboard" />} />
-                <Route path='dashboard' element={< Home />} />
-                <Route path='dashboard/myphotos' element={< MyPhotos />} />
+                <Route path='/' element={< Home />} />
+                <Route path='myphotos' element={< MyPhotos />} />
               </Route>
           </Routes>
         </HashRouter>

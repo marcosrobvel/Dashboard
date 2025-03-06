@@ -9,9 +9,9 @@ export const MyPhotos = () => {
   const [searchTerm] = useOutletContext();
   const favourites = useSelector((state) => state.favourites.data); 
 
-  const filteredImagesMyPhotos = favourites.filter(image =>
-    image.alt_description && image.alt_description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredImagesMyPhotos = searchTerm ? favourites.filter(image =>
+    image.alt_description && image.alt_description.toLowerCase().includes(searchTerm?.toLowerCase())
+  ): favourites;
 
   return (
     <div>

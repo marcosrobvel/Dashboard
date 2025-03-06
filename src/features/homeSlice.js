@@ -8,6 +8,11 @@ export const homeSlice = createSlice({
         data: [],
         error: null
     },
+    reducers: {
+        resetData: (state) => {
+            state.data = []; 
+        }
+    },
     extraReducers: (builder) => {
         builder
         .addCase(homeThunk.pending, (state) => {
@@ -15,7 +20,7 @@ export const homeSlice = createSlice({
         })
         .addCase(homeThunk.fulfilled, (state, action) => {
             state.status='fulfilled'
-            const newImages = action.payload.filter(
+            const newImages = action.payload.results.filter(
                 (image) => !state.data.some((existingImage) => existingImage.id === image.id)
             );
             state.data = [...state.data, ...newImages];
@@ -27,6 +32,7 @@ export const homeSlice = createSlice({
     }
   });
 
+  export const { resetData } = homeSlice.actions;
   export const getDataImages = (state) => state.images.data
   export const getStatusImages = (state) => state.images.status
 

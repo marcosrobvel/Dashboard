@@ -10,7 +10,7 @@ import { SortDropdown } from './SortDropdown';
 
 export const Layout = () => {
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(null);
   const [sortCriteria, setSortCriteria] = useState('date'); 
   const [sortDirection, setSortDirection] = useState('asc');
 
@@ -25,7 +25,7 @@ export const Layout = () => {
     <article>
       <header>
         <div className='divIcons_And_SearchBar'>
-          <Link to={'/Dashboard'}>
+          <Link to={'/'}>
             <button className='btnIconCamera' title='Go to Home'>
               <img src={icon_camera} alt="camera icon" />
             </button>
@@ -35,7 +35,7 @@ export const Layout = () => {
             <input type="text" placeholder=' Search . . .' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
             <SortDropdown onSortChange={handleSortChange} />
           </form>
-          <Link to={'/Dashboard/MyPhotos'}>
+          <Link to={'/myphotos'}>
             <button className='btnIconProfile' title='Go to MyPhotos'>
               <img src={icon_profile} alt="profile icon" />
             </button>

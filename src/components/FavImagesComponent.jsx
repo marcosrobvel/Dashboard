@@ -184,7 +184,7 @@ export const FavImagesComponent = ({data : initialData}) => {
 
     return (
     <>
-        <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 375: 1, 425: 1, 768: 3, 900: 3, 1024: 4, 1200: 5 }}>
+        <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 375: 1, 425: 2, 768: 3, 900: 3, 1024: 4, 1200: 5 }}>
           <Masonry gutter="16px">
             {data.map((image, index) => {
                 return <div key={index} className="image-item" onClick={() => openPopup(image.urls.small)}>
