@@ -39,6 +39,7 @@ article header {
 
 .btnIconProfile{
   transform: scale(1.8);
+  overflow-x: hidden;
 }
 
 .btnIconCamera{
@@ -98,6 +99,15 @@ article header {
 
 /* Laptop L (1440px) */
 @media (max-width: 1440px) {
+
+  .btnIconProfile{
+    transform: scale(1.5);
+  }
+
+  .btnIconCamera{
+    transform: scale(1.1);
+  }
+
   .divSearchBar input {
     width: 600px;
   }
@@ -106,7 +116,7 @@ article header {
 /* Laptop (1024px) */
 @media (max-width: 1024px) {
   .divSearchBar input {
-    width: 500px;
+    width: 400px;
   }
 
   .titleApp {
@@ -117,7 +127,7 @@ article header {
 /* Tablet (768px) */
 @media (max-width: 768px) {
   .divSearchBar input {
-    width: 400px;
+    width: 500px;
   }
 
   .titleApp {
@@ -131,10 +141,12 @@ article header {
   .btnIconCamera {
     transform: scale(1.2);
   }
+
 }
 
 /* Mobile L (425px) */
 @media (max-width: 425px) {
+
   .divSearchBar input {
     width: 300px;
   }

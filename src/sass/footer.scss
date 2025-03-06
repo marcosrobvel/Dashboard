@@ -8,3 +8,17 @@ footer{
     width: 100%;
     z-index: 999999999;
 }
+
+@media screen and (max-width: 425px) {
+    /* Aquí van tus estilos específicos */
+  }
+  
+  /* Para pantallas con un ancho máximo de 375px */
+  @media screen and (max-width: 375px) {
+    /* Aquí van tus estilos específicos */
+  }
+  
+  /* Para pantallas con un ancho máximo de 320px */
+  @media screen and (max-width: 320px) {
+    /* Aquí van tus estilos específicos */
+  }

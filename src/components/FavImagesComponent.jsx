@@ -229,12 +229,15 @@ export const FavImagesComponent = ({data : initialData}) => {
                       
                       <p><strong>Dimensions:</strong> {popupImageData.width} x {popupImageData.height}px</p>
                       <p><strong>Updated at:</strong> {popupImageData.updatedAt}</p>
+                      
+                      <div className="divDesc-Btns">
                       <label className="labelDescription">
                           <strong>Description:</strong>
                       </label>
-                      <textarea type="text" value={descriptions[popupImageData.id] || popupImageData.description} onChange={(e) => handleDescriptionChange(e, popupImageData.id)} placeholder="Add a description" /> 
-                      <button className="btnSave" onClick={handleSaveDesc} disabled={isSaveDisabled}>Save</button>
-                      <button className="btnCancel" onClick={handleCancelDesc}>Reset</button>
+                        <textarea type="text" value={descriptions[popupImageData.id] || popupImageData.description} onChange={(e) => handleDescriptionChange(e, popupImageData.id)} placeholder="Add a description" /> 
+                        <button className="btnSave" onClick={handleSaveDesc} disabled={isSaveDisabled}>Save</button>
+                        <button className="btnCancel" onClick={handleCancelDesc}>Reset</button>
+                      </div>
                   </div>
                 </div>
             </div>

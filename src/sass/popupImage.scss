@@ -61,6 +61,7 @@
   background-color: white;
   padding: 10px;
   border-radius: 5px;
+  transform: scale(1.3);
 }
 
 .image-details textarea {
@@ -94,5 +95,10 @@
 .divThreeDotsPopUp {
   position: relative;
   cursor: pointer;
+}
+
+.divDesc-Btns{
+  display: flex;
+  flex-direction: column;
 }
 
