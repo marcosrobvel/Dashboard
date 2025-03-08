@@ -61,7 +61,8 @@
   background-color: white;
   padding: 10px;
   border-radius: 5px;
-  transform: scale(1.3);
+  transform: scale(1.4);
+  margin-left: 5px;
 }
 
 .image-details textarea {
@@ -102,3 +103,124 @@
   flex-direction: column;
 }
 
+.btnSave, .btnCancel{
+  margin-top: 5px;
+}
+
+.crossClose{
+  color: rgb(235, 9, 9);
+  cursor: pointer;
+  display: flex;
+  justify-self: flex-end;
+}
+
+@media (max-width: 1440px) {
+  .popup-content{
+    transform: scale(0.7);
+  }
+
+  .image-details{
+    transform: scale(1.7);
+    margin-left: 30px;
+  }
+
+  textarea{
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1024px) {
+  
+  .popup{
+    transform: scale(1);
+  }
+
+  textarea{
+    font-size: 12px;
+  }
+
+  .titleHomePage, .lineBeforeHomeTitle{
+    transform: scale(0.8);
+  }
+
+}
+
+@media (max-width: 768px) {
+  .image-details{
+    transform: scale(1.3);
+    width: 200px;
+    margin-left: 0;
+  }
+
+  .popup{
+    transform: scale(1);
+  }
+
+  textarea{
+    font-size: 15px;
+  }
+
+  .titleHomePage, .lineBeforeHomeTitle{
+    transform: scale(0.7);
+  }
+
+}
+
+@media (max-width: 425px) {
+  .titleHomePage{
+    transform: scale(0.5);
+  }
+
+  .lineBeforeHomeTitle{
+    transform: scale(0.4);
+  }
+
+  .popup{
+    z-index: 99999999;
+   
+  }
+
+  .popup-content{
+  }
+
+  .popup-image{
+    display: flex;
+  }
+
+  .heartLikedPopUp {
+  display: flex; 
+  align-items: center; 
+}
+
+.heartLikedPopUp{
+  margin-left: 20px;
+}
+
+.numLikes {
+  font-size: 14px; 
+  margin: 0; 
+}
+
+.divThreeDotsPopUp {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+}
+
+  .image-details{
+    height: 350px;
+    margin-left: -10px;
+  }
+
+  .image-details textarea{
+    height: 60px;
+  }
+
+}
+
+@media (max-width: 375px) {
+
+
+}
+
+@media (max-width: 320px) {}

@@ -120,6 +120,7 @@ body{
 
 textarea{
   resize: none;
+  font-size: 10px;
 }
 
 .numLikes{
@@ -133,12 +134,41 @@ textarea{
 }
 
 .btnSave{
-  background-color: #0084ff;
+  background-color: #48CFCB;
   color: white;
 }
 
 .btnSave:disabled{
   background-color: grey;
+}
+
+.titleHomePage{
+  color: white;
+  margin-left: 20px;
+  margin-bottom: 50px;
+  font-size: 50px;
+  font-family: 'Pacifico';
+  justify-self: center;
+  background-color: #229799;
+  position: relative;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 0%;
+}
+
+.lineBeforeHomeTitle{
+  height: 5px;
+  width: 800px;
+  background-color: white;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  margin-left: 100px;
+  margin-right: 100px;
+  justify-self: center;
+  position: relative;
+  top: 45px;
 }
 
 /* Media Queries con Masonry */

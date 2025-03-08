@@ -16,9 +16,7 @@ export const MyPhotos = () => {
   return (
     <div>
       <div className="photos-container">
-        {favourites.length === 0 ? (
-          <></>
-        ) : (
+        {favourites.length !== 0 && (
           <FavImagesComponent data={filteredImagesMyPhotos} type="favourites" />
         )}
       </div>
