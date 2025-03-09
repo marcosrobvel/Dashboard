@@ -92,11 +92,13 @@ export const ImagesComponent = ({ data = [] }) => {
     }, [data, sortCriteria, sortDirection]);
 
     return (
-    <>  
-     <div className="lineBeforeHomeTitle"></div>
-     <div className="titleHomePage">
-        <p>Home</p>
-     </div>
+    <> 
+    <div className="divTitleHome-MyPhotos"> 
+        <div className="lineBeforeHomeTitle"></div>
+        <div className="titleHomePage">
+            <p>Home</p>
+        </div>
+    </div>
 
 
       <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 375: 1, 425: 2, 768: 3, 900: 3, 1024: 4, 1200: 5  }}>

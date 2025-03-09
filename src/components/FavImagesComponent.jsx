@@ -184,11 +184,12 @@ export const FavImagesComponent = ({data : initialData}) => {
 
     return (
     <>
-
-<div className="lineBeforeHomeTitle"></div>
-     <div className="titleHomePage">
-        <p>My Photos</p>
-     </div>
+    <div className="divTitleHome-MyPhotos">
+      <div className="lineBeforeHomeTitle"></div>
+          <div className="titleHomePage">
+              <p>My Photos</p>
+          </div>
+    </div>
         <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 375: 1, 425: 2, 768: 3, 900: 3, 1024: 4, 1200: 5 }}>
           <Masonry gutter="16px">
             {data.map((image, index) => {
@@ -213,41 +214,40 @@ export const FavImagesComponent = ({data : initialData}) => {
                 <div className={`popup ${showPopup ? 'show' : ''}`} onClick={closePopup}>
                 <div className="popup-content" onClick={(e) => e.stopPropagation()}>
                     <img src={popupImage} alt="Popup" className="popup-image" />
-                    <div className="heartLikedPopUp">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="heartLikesClickedInMYPHOTOSPopUp" viewBox="0 0 16 16">
-                          <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
-                      </svg>  
-                      <p className="numLikes">{popupImageData.likes}</p>
-                    </div>
+
                     
-                    <div className="divThreeDotsPopUp" onClick={(e) => {
-                        e.stopPropagation();
-                        handleDownload(popupImageData.urls.full, `image_${popupImageData.index}.jpg`);
-                    }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-download" viewBox="0 0 16 16">
-                          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
-                          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
-                        </svg>
-                    </div>
+                      <div className="heartLikedPopUp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="heartLikesClickedInMYPHOTOSPopUp" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+                        </svg>  
+                        <p className="numLikes">{popupImageData.likes}</p>
+                      </div>
+                      
+                      <div className="divThreeDotsPopUp" onClick={(e) => {
+                          e.stopPropagation();
+                          handleDownload(popupImageData.urls.full, `image_${popupImageData.index}.jpg`);
+                      }}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-download" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                          </svg>
+                      </div>
+                    
 
                     <div className="image-details">
 
-                    <div className="crossClose" onClick={closePopup}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-                      </svg>
-                    </div>
+                    
 
                       <p><strong>Dimensions:</strong> {popupImageData.width} x {popupImageData.height}px</p>
                       <p><strong>Updated at:</strong> {popupImageData.updatedAt}</p>
                       
                       <div className="divDesc-Btns">
-                      <label className="labelDescription">
-                          <strong>Description:</strong>
-                      </label>
-                        <textarea type="text" value={descriptions[popupImageData.id] || popupImageData.description} onChange={(e) => handleDescriptionChange(e, popupImageData.id)} placeholder="Add a description" /> 
-                        <button className="btnSave" onClick={handleSaveDesc} disabled={isSaveDisabled}>Save</button>
-                        <button className="btnCancel" onClick={handleCancelDesc}>Reset</button>
+                        <label className="labelDescription">
+                            <strong>Description:</strong>
+                        </label>
+                          <textarea type="text" value={descriptions[popupImageData.id] || popupImageData.description} onChange={(e) => handleDescriptionChange(e, popupImageData.id)} placeholder="Add a description" /> 
+                          <button className="btnSave" onClick={handleSaveDesc} disabled={isSaveDisabled}>Save</button>
+                          <button className="btnCancel" onClick={handleCancelDesc}>Reset</button>
                       </div>
                   </div>
                 </div>

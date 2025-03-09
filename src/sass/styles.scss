@@ -226,10 +226,19 @@ textarea{
     margin-right: 15px;
     
   }*/
+
+  .divAllImages:hover, svg:hover{
+    transform: scale(1);
+  }
 }
 
 /* Mobile L (425px) */
 @media (max-width: 425px) {
+
+  .divAllImages:hover, svg:hover{
+    transform: scale(1);
+  }
+
   /* Ajustes de imagen */
   .image-item {
     margin-bottom: 8px; /* Espacio más pequeño entre imágenes */
@@ -265,10 +274,20 @@ textarea{
     grid-template-columns: 1fr; /* En pantallas pequeñas solo una columna */
     gap: 16px;
   }
+
+  .divTitleHome-MyPhotos{
+    transform: scale(0.7);
+  }
+  
 }
 
 /* Mobile M (375px) */
 @media (max-width: 375px) {
+
+  .divAllImages:hover, svg:hover{
+    transform: scale(1);
+  }
+
   .image-item {
     margin-bottom: 8px; /* Espacio más pequeño entre imágenes */
     display: flex;
@@ -305,6 +324,11 @@ textarea{
 
 /* Mobile S (320px) */
 @media (max-width: 320px) {
+
+  .divAllImages:hover, svg:hover{
+    transform: scale(1);
+  }
+  
   .infiniteScrollContainer {
     height: 10em;
   }
