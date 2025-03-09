@@ -1,7 +1,7 @@
 header {
   display: flex;
-  justify-content: center; /* Centra todo el contenido horizontalmente */
-  align-items: center;     /* Centra verticalmente */
+  justify-content: center; 
+  align-items: center;    
   width: 100%;
   z-index: 999999999;
   margin-bottom: 50px;
@@ -97,9 +97,6 @@ article header {
   top: 5px;
 }
 
-/* Media Queries */
-
-/* Laptop L (1440px) */
 @media (max-width: 1440px) {
 
   .btnIconProfile{
@@ -115,7 +112,6 @@ article header {
   }
 }
 
-/* Laptop (1024px) */
 @media (max-width: 1024px) {
   .divSearchBar input {
     width: 400px;
@@ -126,7 +122,6 @@ article header {
   }
 }
 
-/* Tablet (768px) */
 @media (max-width: 768px) {
   .divSearchBar input {
     width: 250px;
@@ -146,7 +141,6 @@ article header {
 
 }
 
-/* Mobile L (425px) */
 @media (max-width: 425px) {
 
   .divSearchBar input {
@@ -187,7 +181,6 @@ article header {
   }
 }
 
-/* Mobile M (375px) */
 @media (max-width: 375px) {
   .divSearchBar input {
     width: 100%;
@@ -206,7 +199,6 @@ article header {
   }
 }
 
-/* Mobile S (320px) */
 @media (max-width: 320px) {
   .divSearchBar input {
     width: 100%;

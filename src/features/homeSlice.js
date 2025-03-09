@@ -36,8 +36,3 @@ export const homeSlice = createSlice({
   export const getDataImages = (state) => state.images.data
   export const getStatusImages = (state) => state.images.status
 
-/*
-  const newImages = action.payload.filter(
-    (image) => !state.data.some((existingImage) => existingImage.id === image.id)
-  );
-  state.data = [...state.data, ...newImages];*/

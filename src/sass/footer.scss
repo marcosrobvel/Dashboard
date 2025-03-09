@@ -23,7 +23,6 @@ footer{
     
   }
   
-  /* Para pantallas con un ancho máximo de 375px */
   @media screen and (max-width: 375px) {
     footer{
         transform: scale();
@@ -31,7 +30,6 @@ footer{
     }
   }
   
-  /* Para pantallas con un ancho máximo de 320px */
   @media screen and (max-width: 320px) {
     footer{
         transform: scale();

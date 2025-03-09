@@ -195,13 +195,12 @@
 
   .popup-content {
     display: flex;
-    flex-direction: column; /* Asegura que los elementos dentro se distribuyan verticalmente */
-    justify-content: flex-start; /* Alinea los elementos al inicio */
-    align-items: center; /* Centra los elementos horizontalmente */
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center; 
     position: relative;
     overflow: hidden;
     transform: scale(0.6);
-  //  top: 60px;
   }
 
   .image-details{
@@ -212,6 +211,10 @@
 
   .divDesc-Btns textarea{
     height: 50px;
+  }
+
+  .lineBeforeHomeTitle{
+    transform: scale(0.6);
   }
 
 }
@@ -240,7 +243,9 @@
     transform: scale(0.8);
   }
 
-  
+  .lineBeforeHomeTitle{
+    transform: scale(0.5);
+  }
 
 }
 
@@ -256,6 +261,10 @@
 
   .heartLikedPopUp{
     left: -220px;
+  }
+
+  .lineBeforeHomeTitle{
+    transform: scale(0.4);
   }
 
 }

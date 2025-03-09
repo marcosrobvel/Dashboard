@@ -171,9 +171,6 @@ textarea{
   top: 45px;
 }
 
-/* Media Queries con Masonry */
-
-/* Laptop L (1440px) */
 @media (max-width: 1440px) {
   
   .infiniteScrollContainer {
@@ -185,14 +182,12 @@ textarea{
     font-size: 15px;
   }
 
-  /* Masonry: 4 columnas */
   .divAllImages {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
 }
 
-/* Laptop (1024px) */
 @media (max-width: 1024px) {
   .infiniteScrollContainer {
     width: 40em;
@@ -210,44 +205,27 @@ textarea{
   }
 }
 
-/* Tablet (768px) */
 @media (max-width: 768px) {
-  /*.infiniteScrollContainer {
-    width: 40em;
-    height: 25em;
-  }
-
-  .btnShowMore {
-    font-size: 14px;
-  }
-
-  .divAllImages {
-    margin-left: 15px;
-    margin-right: 15px;
-    
-  }*/
 
   .divAllImages:hover, svg:hover{
     transform: scale(1);
   }
 }
 
-/* Mobile L (425px) */
 @media (max-width: 425px) {
 
   .divAllImages:hover, svg:hover{
     transform: scale(1);
   }
 
-  /* Ajustes de imagen */
   .image-item {
-    margin-bottom: 8px; /* Espacio más pequeño entre imágenes */
+    margin-bottom: 8px; 
     display: flex;
     justify-content: center;
   }
 
   .cardImage {
-    height: 200px; /* Limita la altura para que las imágenes no se alarguen demasiado */
+    height: 200px; 
     padding-bottom: 30px;
   }
 
@@ -259,7 +237,7 @@ textarea{
   }
 
   .popup-content {
-    max-width: 100%; /* Asegurarse de que el popup ocupe el 100% del ancho */
+    max-width: 100%;
     padding: 10px;
   }
 
@@ -268,10 +246,9 @@ textarea{
     height: auto;
   }
 
-  /* Masonry (se adapta automáticamente, pero si es necesario puedes agregar reglas aquí) */
   .masonry {
     display: grid;
-    grid-template-columns: 1fr; /* En pantallas pequeñas solo una columna */
+    grid-template-columns: 1fr; 
     gap: 16px;
   }
 
@@ -281,7 +258,6 @@ textarea{
   
 }
 
-/* Mobile M (375px) */
 @media (max-width: 375px) {
 
   .divAllImages:hover, svg:hover{
@@ -289,13 +265,13 @@ textarea{
   }
 
   .image-item {
-    margin-bottom: 8px; /* Espacio más pequeño entre imágenes */
+    margin-bottom: 8px; 
     display: flex;
     justify-content: center;
   }
 
   .cardImage {
-    height: 180px; /* Altura ligeramente más pequeña para ajustarse mejor */
+    height: 180px; 
   }
 
   .heartLikes,
@@ -305,7 +281,7 @@ textarea{
   }
 
   .popup-content {
-    max-width: 100%; /* Asegurarse de que el popup ocupe el 100% del ancho */
+    max-width: 100%;
     padding: 10px;
   }
 
@@ -314,21 +290,19 @@ textarea{
     height: auto;
   }
 
-  /* Ajustes específicos para el diseño de columnas */
   .masonry {
     display: grid;
-    grid-template-columns: 1fr; /* Solo una columna en pantallas pequeñas */
-    gap: 12px; /* Espacio entre las imágenes */
+    grid-template-columns: 1fr; 
+    gap: 12px;
   }
 }
 
-/* Mobile S (320px) */
 @media (max-width: 320px) {
 
   .divAllImages:hover, svg:hover{
     transform: scale(1);
   }
-  
+
   .infiniteScrollContainer {
     height: 10em;
   }
@@ -339,7 +313,6 @@ textarea{
   }
 
   .divAllImages {
-    /* Masonry: 1 columna */
     grid-template-columns: repeat(1, 1fr);
     gap: 5px;
   }

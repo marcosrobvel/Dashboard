@@ -97,14 +97,6 @@ export const FavImagesComponent = ({data : initialData}) => {
       setDropdownIndex(dropdownIndex === index ? null : index); 
     };
 
-    /*const handleDescriptionChange = (e, imageId) => {
-      const newDescription = e.target.value;
-      setDescriptions((prevDescriptions) => ({
-          ...prevDescriptions,
-          [imageId]: newDescription,
-      }));
-  };*/
-
   const handleSaveDesc = () => {
     if (popupImageData) {
       const newDescription = descriptions[popupImageData.id] || popupImageData.description;
