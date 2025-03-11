@@ -72,18 +72,11 @@ article header {
   width: 50px;
 }
 
-.dropdownFilterOrder {
-  width: auto;
+.dropdownOrder{
   height: 40px;
-  border-top-right-radius: 20px;
+  width: 90px;
   border-bottom-right-radius: 20px;
-}
-
-.dropdownFilterOrderAscDesc {
-  border-radius: 20px;
-  margin-left: 10px;
-  height: 40px;
-  width: 50px;
+  border-top-right-radius: 20px;
 }
 
 .titleApp{
@@ -156,20 +149,9 @@ article header {
     width: auto;
   }
 
-  .dropdownFilterOrder{
-    width: 60px;
-    height: 25px;
-    border-bottom-right-radius: 0%;
-  }
-
-  .dropdownFilterOrderAscDesc{
-    width: 60px;
-    height: 20px;
-    border-top-left-radius: 0%;
-    border-bottom-left-radius: 0%;
-    border-top-right-radius: 0%;
-    position: relative;
-    right: 10px;
+  .dropdownOrder{
+    height: 45px;
+    width: 90px;
   }
 
   .titleApp{
@@ -197,6 +179,11 @@ article header {
   .btnIconCamera {
     transform: scale(1);
   }
+
+  .dropdownOrder{
+    height: 45px;
+    width: 70px;
+  }
 }
 
 @media (max-width: 320px) {
@@ -218,5 +205,10 @@ article header {
 
   .btnIconCamera {
     transform: scale(0.8);
+  }
+
+  .dropdownOrder{
+    height: 45px;
+    width: 60px;
   }
 }
