@@ -41,27 +41,30 @@ export const FavImagesComponent = ({data : initialData}) => {
     };
      
     const openPopup = (image, index) => {
-      setPopupImage(image.urls.small);
-      setShowPopup(true);
-      setPopupImageData({ 
-        description: descriptions[image.id] || image.alt_description || "No description",
-        likes: image.likes,
-        width: image.width,
-        height: image.height,
-        updatedAt: setDateFormat(image.updated_at),
-        index: index,
-        urls: image.urls,
-        id: image.id,
-    });
-    setEditableDescription(image.alt_description || "");
-    setDropdownIndex(index);
-    setIsSaveDisabled(true);
+      // Verifica si `image` y `image.urls` existen
+      if (image && image.urls && image.urls.small) {
+        setPopupImage(image.urls.small);
+        setShowPopup(true);
+        setPopupImageData({ 
+          description: descriptions[image.id] || image.alt_description || "No description",
+          likes: image.likes,
+          width: image.width,
+          height: image.height,
+          updatedAt: setDateFormat(image.updated_at),
+          index: index,
+          urls: image.urls,
+          id: image.id,
+        });
+        setEditableDescription(image.alt_description || "");
+        setDropdownIndex(index);
+        setIsSaveDisabled(true);
+      } 
     };
   
     const closePopup = () => {
       setShowPopup(false);
       setPopupImage(null);
-      setShowDropdown(null); 
+      //setShowDropdown(null); 
     };
 
     const toggleLike = (index) => {
