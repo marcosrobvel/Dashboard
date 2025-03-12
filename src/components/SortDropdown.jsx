@@ -9,7 +9,7 @@ export const SortDropdown = ({ onSortChange }) => {
     
       return (
         <select className="dropdownOrder" onChange={handleChange}>
-            <option value="" disabled selected>Order by</option>
+            <option defaultValue="" >Order by</option>
           <option value="date_asc">Import date ↑</option>
           <option value="date_desc">Import date ↓</option>
           <option value="likes_asc">Likes ↑</option>

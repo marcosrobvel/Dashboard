@@ -7,12 +7,19 @@ import '../sass/header.scss';
 import '../sass/popupImage.scss';
 import { Outlet } from 'react-router-dom';
 import { SortDropdown } from './SortDropdown';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const Layout = () => {
 
-  const [searchTerm, setSearchTerm] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
   const [sortCriteria, setSortCriteria] = useState('date'); 
   const [sortDirection, setSortDirection] = useState('asc');
+  const location = useLocation();
+
+  useEffect(() => {
+    setSearchTerm(""); 
+  }, [location]);
 
   const handleSortChange = (criteria, direction) => {
     setSortCriteria(criteria);
