@@ -40,7 +40,14 @@ const favouritesSlice = createSlice({
     resetFavourites: (state) => {
       state.data = [];
       saveFavouritesToLocalStorage([]);
-    }
+    },
+
+    removeFavourite: (state, action) => {
+      const image = action.payload;
+
+      state.data = state.data.filter(fav => fav && fav.id !== image.id);
+      saveFavouritesToLocalStorage(state.data);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -58,7 +65,7 @@ const favouritesSlice = createSlice({
   }
 });
 
-export const { toggleFavourite, resetFavourites } = favouritesSlice.actions;
+export const { toggleFavourite, removeFavourite, resetFavourites } = favouritesSlice.actions;
 
 export const getFavourites = (state) => state.favourites.data;
 export const getFavouritesStatus = (state) => state.favourites.status;

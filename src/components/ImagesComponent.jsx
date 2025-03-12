@@ -14,6 +14,7 @@ export const ImagesComponent = ({ data = [] }) => {
     const [likes, setLikes] = useState({});
     const dispatch = useDispatch();
     const [sortedData, setSortedData] = useState(data);
+    const favourites = useSelector((state) => state.favourites.data);
 
     const [searchTerm, sortCriteria, sortDirection] = useOutletContext();
     
@@ -91,6 +92,8 @@ export const ImagesComponent = ({ data = [] }) => {
         setSortedData(sorted);
     }, [data, sortCriteria, sortDirection]);
 
+    const filteredData = sortedData.filter(image => !favourites.some(fav => fav.id === image.id));
+
     return (
     <> 
     <div className="divTitleHome-MyPhotos"> 
@@ -103,7 +106,7 @@ export const ImagesComponent = ({ data = [] }) => {
 
       <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 375: 1, 425: 2, 768: 3, 900: 3, 1024: 4, 1200: 5  }}>
                 <Masonry gutter="16px">
-                    {sortedData.map((image, index) => {
+                    {filteredData.map((image, index) => {
                         const isLiked = likes[index];
                         return (
                             <div key={index} className="image-item" onClick={() => openPopup(image.urls.small)}>
