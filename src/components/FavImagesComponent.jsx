@@ -41,7 +41,6 @@ export const FavImagesComponent = ({data : initialData}) => {
     };
      
     const openPopup = (image, index) => {
-      // Verifica si `image` y `image.urls` existen
       if (image && image.urls && image.urls.small) {
         setPopupImage(image.urls.small);
         setShowPopup(true);
@@ -64,7 +63,6 @@ export const FavImagesComponent = ({data : initialData}) => {
     const closePopup = () => {
       setShowPopup(false);
       setPopupImage(null);
-      //setShowDropdown(null); 
     };
 
     const toggleLike = (index) => {
