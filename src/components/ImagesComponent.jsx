@@ -42,7 +42,10 @@ export const ImagesComponent = ({ data = [] }) => {
         console.error("Invalid image object", image);
         return;
     }
-      const isLiked = !likes[image.id]; 
+
+
+    setTimeout(() => {
+        const isLiked = !likes[image.id]; 
       toggleLike(image.id);
 
       if (isLiked) {
@@ -51,6 +54,9 @@ export const ImagesComponent = ({ data = [] }) => {
       } else {
           localStorage.removeItem(image.id);
       }
+    }, 200);
+    
+      
   };
 
     const sortImages = (images, criteria, direction) => {
@@ -107,7 +113,7 @@ export const ImagesComponent = ({ data = [] }) => {
       <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 375: 1, 425: 2, 768: 3, 900: 3, 1024: 4, 1200: 5  }}>
                 <Masonry gutter="16px">
                     {filteredData.map((image, index) => {
-                        const isLiked = likes[index];
+                        const isLiked = favourites.some(fav => fav.id === image.id);
                         return (
                             <div key={index} className="image-item" onClick={() => openPopup(image.urls.small)}>
                                 <div className="divAllImages">
