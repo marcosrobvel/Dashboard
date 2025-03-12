@@ -37,7 +37,9 @@ export const Layout = () => {
               <img src={icon_camera} alt="camera icon" />
             </button>
           </Link>
-          <p className='titleApp'>Visualist</p>
+          <Link to={'/'} style={{ textDecoration: 'none' }}>
+            <p className='titleApp'>Visualist</p>
+          </Link>
           <form className="divSearchBar">
             <input type="text" placeholder=' Search . . .' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
             <SortDropdown onSortChange={handleSortChange} />
